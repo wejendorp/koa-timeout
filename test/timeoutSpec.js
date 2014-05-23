@@ -18,7 +18,7 @@ describe('timeout', function() {
         this.throw('Error !!');
 
       this.status = 200;
-      this.body = 'No bastards here';
+      this.body = 'No errors here';
     });
     server = app.listen(8943);
   });
@@ -27,13 +27,13 @@ describe('timeout', function() {
   });
 
   it('is catchable by koa/co', function(done) {
-    request(server).get('/timeout').expect('Caught the bastard', done);
+    request(server).get('/timeout').expect(408, 'Request timeout', done);
   });
   it('doesn\'t interfere with throws', function(done) {
-    request(server).get('/error').expect('Caught the bastard', done);
+    request(server).get('/error').expect(500, 'Error !!', done);
   });
   it('responds normally when no timeout occurs', function(done){
-    request(server).get('/').expect(200, done);
+    request(server).get('/').expect(200, 'No errors here', done);
   });
 });
 
@@ -41,7 +41,7 @@ function * tryCatch(next) {
   try {
     yield next;
   } catch(e) {
-    this.status = 500;
-    this.body = 'Caught the bastard';
+    this.status = e.status || 500;
+    this.body = e.message;
   }
 }

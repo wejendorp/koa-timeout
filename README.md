@@ -2,7 +2,7 @@
 
 Timeout middleware for koa.
 
-Will throw "Request timed out" for any requests that take too long.
+Will throw "Request timeout" (Http 408) for any requests that take too long.
 
 ## Installation
 
@@ -21,7 +21,7 @@ app.use(function * tryCatch(next) {
   try {
     yield next;
   } catch(e) {
-    this.status = 500;
+    this.status = e.status || 500;
     this.body = e.message;
   }
 });

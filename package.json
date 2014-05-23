@@ -1,6 +1,6 @@
 {
   "name": "koa-timeout",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Request timeout middleware for Koa",
   "main": "index.js",
   "scripts": {

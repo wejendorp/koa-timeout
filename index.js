@@ -7,7 +7,9 @@ module.exports = function(timeout) {
     yield Promise.race([
       new Promise(function(resolve, reject) {
         setTimeout(function() {
-          reject('Request timed out');
+          var e = new Error('Request timeout')
+          e.status = 408;
+          reject(e);
         }, timeout);
       }),
       new Promise(function(resolve, reject) {
