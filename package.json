@@ -1,0 +1,20 @@
+{
+  "name": "koa-timeout",
+  "version": "0.0.1",
+  "description": "Request timeout middleware for Koa",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --harmony test"
+  },
+  "author": "Jacob Wejendorp",
+  "license": "MIT",
+  "devDependencies": {
+    "koa": "~0.6.1",
+    "mocha": "~1.19.0",
+    "supertest": "~0.13.0"
+  },
+  "dependencies": {
+    "co": "*",
+    "promise": "*"
+  }
+}
