@@ -14,7 +14,7 @@ as middleware after our error handler:
 
 ```js
 var koa = require('koa');
-var timeout = require('timeout')(500);
+var timeout = require('koa-timeout')(500);
 
 var app = koa();
 app.use(function * tryCatch(next) {
