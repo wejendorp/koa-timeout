@@ -4,6 +4,7 @@ var co = require('co');
 
 module.exports = function(timeout) {
   return function *(next) {
+    var ctx = this;
     yield Promise.race([
       new Promise(function(resolve, reject) {
         setTimeout(function() {
@@ -15,7 +16,7 @@ module.exports = function(timeout) {
       new Promise(function(resolve, reject) {
         co(function*() {
           yield next;
-        })(function(err) {
+        }).call(ctx, function(err) {
           if(err) reject(err);
           resolve();
         });
