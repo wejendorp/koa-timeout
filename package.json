@@ -1,6 +1,6 @@
 {
   "name": "koa-timeout",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Request timeout middleware for Koa",
   "main": "index.js",
   "scripts": {
@@ -18,12 +18,12 @@
   "author": "Jacob Wejendorp",
   "license": "MIT",
   "devDependencies": {
-    "koa": "0",
-    "mocha": "2",
-    "supertest": "0"
+    "koa": "~0.13.0",
+    "mocha": "~2.0.1",
+    "supertest": "~0.15.0"
   },
   "dependencies": {
-    "co": "3"
+    "co": "~3.1.0"
   },
   "engines": {
     "node": ">= 0.11.13"
