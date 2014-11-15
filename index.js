@@ -1,5 +1,4 @@
 
-var Promise = require('promise');
 var co = require('co');
 
 module.exports = function(timeout) {
@@ -15,7 +14,7 @@ module.exports = function(timeout) {
       }),
       new Promise(function(resolve, reject) {
         co(function*() {
-          yield next;
+          yield *next;
         }).call(ctx, function(err) {
           if(err) reject(err);
           resolve();
